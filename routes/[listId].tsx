@@ -72,7 +72,7 @@ export default function Home(
   return (
     <>
       <Head>
-        <title>Todo List</title>
+        <title>每日打卡🙏</title>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <TodoListView initialData={data} latency={latency} />

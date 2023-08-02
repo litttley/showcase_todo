@@ -105,7 +105,7 @@ export default function TodoListView(
       <div class="rounded w-full xl:max-w-xl">
         <div class="flex flex-col gap-4 pb-4">
           <div class="flex flex-row gap-2 items-center">
-            <h1 class="font-bold text-xl">Todo List</h1>
+            <h1 class="font-bold text-xl">每日打卡</h1>
             <div
               class={`inline-block h-2 w-2 ${
                 busy ? "bg-yellow-600" : "bg-green-600"
@@ -116,13 +116,13 @@ export default function TodoListView(
           </div>
           <div class="flex">
             <p class="opacity-50 text-sm">
-              Share this page to collaborate with others.
+              记录每日练功感悟与心得。
             </p>
           </div>
           <div class="flex">
             <input
               class="border rounded w-full py-2 px-3 mr-4"
-              placeholder="Add a todo item"
+              placeholder="添加笔记"
               ref={addTodoInput}
             />
             <button
@@ -145,14 +145,14 @@ export default function TodoListView(
         </div>
         <div class="pt-6 opacity-50 text-sm">
           <p>
-            Initial data fetched in {props.latency}ms
+            数据加载耗时{props.latency}毫秒
           </p>
           <p>
             <a
-              href="https://github.com/denoland/showcase_todo"
+              href="https://littley.netlify.app/"
               class="underline"
             >
-              Source code
+              小Y博客
             </a>
           </p>
         </div>
