@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import type { TodoList, TodoListItem } from "../shared/api.ts";
 import axios from "axios-web";
-
+import moment from 'momentjs'
 interface LocalMutation {
   text: string | null;
   completed: boolean;
@@ -126,11 +126,12 @@ export default function TodoListView(
               ref={addTodoInput}
             />
             <button
+            style={{width:"100px"}}
               class="p-2 bg-blue-600 text-white rounded disabled:opacity-50"
               onClick={addTodo}
               disabled={adding}
             >
-              Add
+              添加
             </button>
           </div>
         </div>
@@ -181,7 +182,7 @@ function TodoItem(
     input.current.value = item.text;
   }, []);
   const doDelete = useCallback(() => {
-    const yes = confirm("Are you sure you want to delete this item?");
+    const yes = confirm("是否要删除?");
     if (!yes) return;
     setBusy(true);
     save(item, null, item.completed);
@@ -205,7 +206,7 @@ function TodoItem(
           />
           <button
             class="p-2 rounded mr-2 disabled:opacity-50"
-            title="Save"
+            title="保存"
             onClick={doSave}
             disabled={busy}
           >
@@ -213,7 +214,7 @@ function TodoItem(
           </button>
           <button
             class="p-2 rounded disabled:opacity-50"
-            title="Cancel"
+            title="退出"
             onClick={cancelEdit}
             disabled={busy}
           >
@@ -235,12 +236,13 @@ function TodoItem(
               {item.text}
             </p>
             <p class="text-xs opacity-50 leading-loose">
-              {new Date(item.createdAt).toISOString()}
+              {/* {new Date(item.createdAt).toISOString()} */}
+              {moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
             </p>
           </div>
           <button
             class="p-2 mr-2 disabled:opacity-50"
-            title="Edit"
+            title="编辑"
             onClick={() => setEditing(true)}
             disabled={busy}
           >
@@ -248,7 +250,7 @@ function TodoItem(
           </button>
           <button
             class="p-2 disabled:opacity-50"
-            title="Delete"
+            title="删除"
             onClick={doDelete}
             disabled={busy}
           >
